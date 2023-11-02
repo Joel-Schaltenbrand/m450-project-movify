@@ -22,10 +22,10 @@ jobs:
     - name: Build and test
       working-directory: backend/movify
       run: |
-        mvn clean test > test-results.txt
+        mvn clean test > ../automation/test-results.txt
    
     - name: Upload Test Results
       uses: actions/upload-artifact@v2
       with:
         name: test-results
-        path: test-results.txt
+        path: automation/test-results.txt
