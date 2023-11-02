@@ -1,8 +1,7 @@
 name: Weekly Test
 
 on:
-  schedule:
-    - cron: '13 16 * * 4'
+  push:
 
 jobs:
   build:
