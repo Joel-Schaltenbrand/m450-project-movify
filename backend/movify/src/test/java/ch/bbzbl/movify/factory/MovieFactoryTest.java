@@ -50,7 +50,6 @@ class MovieFactoryTest {
 		Assertions.assertEquals(castList, movieExtended.getCast());
 		Assertions.assertEquals("2023", movieExtended.getReleaseYear());
 		Assertions.assertEquals("https://www.youtube.com/watch?v=sample-trailer-id", movieExtended.getTrailer());
-		System.out.println("Test finished for MovieFactory.createMovieExtended_WithTrailer");
 	}
 
 	@Test
@@ -70,7 +69,6 @@ class MovieFactoryTest {
 		Assertions.assertEquals(castList, movieExtended.getCast());
 		Assertions.assertEquals("2023", movieExtended.getReleaseYear());
 		Assertions.assertNull(movieExtended.getTrailer());
-		System.out.println("Test finished for MovieFactory.createMovieExtended_WithoutTrailer");
 	}
 
 	@Test
@@ -84,7 +82,6 @@ class MovieFactoryTest {
 		Assertions.assertEquals("Sample Actor", castModifiedList.get(0).getName());
 		Assertions.assertEquals("Sample Character", castModifiedList.get(0).getCharacter());
 		Assertions.assertEquals("https://image.tmdb.org/t/p/original/sample-actor.jpg", castModifiedList.get(0).getProfilePhoto());
-		System.out.println("Test finished for MovieFactory.createCastExtended");
 	}
 
 	@Test
@@ -94,7 +91,6 @@ class MovieFactoryTest {
 		List<CastModified> castModifiedList = movieFactory.createCastExtended(castList);
 
 		Assertions.assertTrue(castModifiedList.isEmpty());
-		System.out.println("Test finished for MovieFactory.createCastExtended_EmptyList");
 	}
 
 	private void prepareSampleMovie() {
