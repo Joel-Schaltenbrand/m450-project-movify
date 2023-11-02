@@ -1,0 +1,117 @@
+.movie-card {
+  width: 100%;
+  margin-top: 15%;
+
+  .card {
+    cursor: pointer;
+    figure {
+      position: relative;
+      overflow: hidden;
+      max-height: 200px;
+      user-select: none;
+
+      #img-foreground {
+        z-index: 1;
+        position: absolute;
+        max-height: 200px;
+      }
+
+      #img-background {
+        filter: blur(5px);
+      }
+      .text-wrapper {
+        p {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          margin: 10px 20px;
+        }
+      }
+    }
+    .overlay {
+      z-index: 5;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 1rem;
+    }
+    .card-body {
+      position: relative;
+      max-height: 250px;
+      overflow: hidden;
+    }
+  }
+}
+
+.anim-discard {
+  animation-name: discard;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: initial;
+}
+
+.anim-like {
+  animation-name: like;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: initial;
+}
+
+@keyframes discard {
+  from {
+    transform: translate(0px, 0px);
+  }
+  to {
+    transform: translateX(-1000px);
+    rotate: -30deg;
+    opacity: 0;
+  }
+}
+
+@keyframes like {
+  from {
+    transform: translate(0px, 0px);
+  }
+  to {
+    transform: translateX(1000px);
+    rotate: 30deg;
+    opacity: 0;
+  }
+}
+
+.modal {
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  h2 {
+    padding-top: 16px;
+  }
+  button {
+    margin-bottom: 16px;
+  }
+  .modal-box {
+    max-height: 650px;
+    display: flex;
+    flex-direction: column;
+    .actors {
+      width: 100%;
+    }
+    .actor-container {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 16px;
+      width: 100%;
+      img {
+        width: 75px;
+      }
+    }
+    .carousel {
+      height: 200px;
+      width: 100%;
+      .carousel-item {
+        margin: 10px 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+<div class="register flex flex-col items-center justify-center mt-40 w-full">
+  <h1 class="text-lg">Register an account for free</h1>
+  <div class="form-control w-full max-w-xs">
+    <label class="label">
+      <span class="label-text">Email</span>
+    </label>
+    <input
+      type="text"
+      placeholder="Your email here"
+      class="input input-primary input-bordered w-full max-w-xs"
+      id="email"
+    />
+    <div
+      class="alert alert-warning w-full"
+      id="warning-password"
+      style="display: none"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="stroke-current shrink-0 h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+        />
+      </svg>
+      <span
+        >Warning: Password must contain A-Z, a-z, 0-9 and a special
+        character</span
+      >
+    </div>
+    <div
+      class="alert alert-warning w-full"
+      id="warning-password-not-confirmed"
+      style="display: none"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="stroke-current shrink-0 h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+        />
+      </svg>
+      <span>Warning: Passwords do not match</span>
+    </div>
+    <div
+      class="alert alert-warning w-full"
+      id="warning-email"
+      style="display: none"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="stroke-current shrink-0 h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+        />
+      </svg>
+      <span>Warning: Invalid email address!</span>
+    </div>
+    <label class="label"> </label>
+    <label class="label">
+      <span class="label-text">Password</span>
+    </label>
+    <input
+      type="password"
+      placeholder="Your password here"
+      class="input input-primary input-bordered w-full max-w-xs"
+      id="password"
+    />
+    <label class="label">
+      <span class="label-text">Confirm password</span>
+    </label>
+    <input
+      type="password"
+      placeholder="Your password here"
+      class="input input-primary input-bordered w-full max-w-xs"
+      id="password-confirmation"
+      (keyup.enter)="register()"
+    />
+    <label class="label"> </label>
+    <div class="btn-group">
+      <button routerLink="/account/login" class="btn btn w-1/2">Login</button>
+      <button (click)="register()" class="btn btn-active w-1/2">
+        Register
+      </button>
+    </div>
+  </div>
+</div>

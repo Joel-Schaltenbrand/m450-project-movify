@@ -1,0 +1,37 @@
+nav {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  .theme-toggle {
+    width: 25px;
+    height: 25px;
+  }
+  img {
+    width: 30px;
+    margin-right: 10px;
+  }
+  h3 {
+    font-family: "Jost", sans-serif;
+    font-size: 1.5rem;
+  }
+  .avatar {
+    cursor: default;
+    user-select: none;
+    padding: 0 1rem;
+  }
+}
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent gray overlay */
+  z-index: 9999;
+}
+
+.loading-container img {
+  width: 200px; /* Adjust the size of the GIF as desired */
+}

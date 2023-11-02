@@ -1,0 +1,17 @@
+.shuffle {
+  width: fit-content;
+  margin: auto;
+  display: flex;
+  .button-container {
+    width: fit-content;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    button {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+}

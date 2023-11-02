@@ -1,0 +1,18 @@
+.alert {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 500px;
+  animation: fade-in 0.25s ease-in-out;
+  margin: 100px auto;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

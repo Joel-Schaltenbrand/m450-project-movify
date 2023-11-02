@@ -1,0 +1,89 @@
+<div class="movie-card">
+  <label for="movie-card-modal">
+    <div class="card w-96 bg-base-100 shadow-xl">
+      <figure class="card-image">
+        <img
+          id="img-foreground"
+          src="{{ movieData.posterPath }}"
+          alt="Movie - {{ movieData.title }}"
+        />
+        <img
+          id="img-background"
+          src="{{ movieData.posterPath }}"
+          alt="Movie - {{ movieData.title }}"
+        />
+        <div class="text-wrapper">
+          <p class="badge badge-default">{{ movieData.releaseYear }}</p>
+        </div>
+      </figure>
+      <div class="overlay"></div>
+      <div class="card-body">
+        <div class="card-actions">
+          <div
+            *ngFor="let genre of movieData.genres"
+            class="badge badge-accent"
+          >
+            {{ genre.name }}
+          </div>
+        </div>
+        <h2 class="card-title">{{ movieData.title }}</h2>
+        <p>{{ movieData.overview }}</p>
+      </div>
+    </div></label
+  >
+  <input type="checkbox" id="movie-card-modal" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box">
+      <label for="movie-card-modal" class="btn btn-sm btn-circle btn-close"
+        >✕</label
+      >
+      <!-- <video controls="controls" src="{{ movieData.trailer }}"></video> -->
+
+      <h2 class="font-bold text-lg pb-4">
+        {{ movieData.title }} - {{ movieData.releaseYear }}
+      </h2>
+      <a
+        *ngIf="movieData.trailer != null"
+        target="_blank"
+        href="{{ movieData.trailer }}"
+      >
+        <button class="btn btn-active btn-secondary">
+          Watch the trailer
+        </button></a
+      >
+      <div class="card-actions">
+        <div *ngFor="let genre of movieData.genres" class="badge badge-accent">
+          {{ genre.name }}
+        </div>
+      </div>
+      <p class="py-4">
+        {{ movieData.overview }}
+      </p>
+      <h2 class="font-bold text-lg">Cast</h2>
+      <div class="actors pb-4">
+        <p *ngFor="let actor of movieData.cast">
+          <strong>{{ actor.name }}</strong> as {{ actor.character }}
+        </p>
+      </div>
+      <!-- <div
+        class="carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box"
+      >
+        <div *ngFor="let actor of movieData.cast" class="carousel-item m-5">
+          <img
+            title="{{ actor.name }}"
+            src="{{ actor.profilePhoto }}"
+            class="rounded-box"
+          />
+        </div>
+      </div> -->
+      <div class="actor-container">
+        <img
+          *ngFor="let actor of movieData.cast"
+          title="{{ actor.name }}"
+          src="{{ actor.profilePhoto }}"
+          class="rounded-box"
+        />
+      </div>
+    </div>
+  </div>
+</div>

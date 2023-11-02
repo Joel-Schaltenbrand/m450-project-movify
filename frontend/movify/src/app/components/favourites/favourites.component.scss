@@ -1,0 +1,70 @@
+.list {
+  max-width: 750px;
+  min-height: 100vh;
+  height: fit-content;
+  margin: auto;
+  .list-item {
+    cursor: pointer;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    button {
+      width: 42px;
+      height: 42px;
+    }
+  }
+}
+
+.anim-delete {
+  animation-name: delete;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: initial;
+}
+
+@keyframes delete {
+  from {
+    transform: translate(0px, 0px);
+  }
+  to {
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+}
+
+.modal {
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  h2 {
+    padding-top: 16px;
+  }
+  button {
+    margin-bottom: 16px;
+  }
+  .modal-box {
+    max-height: 650px;
+    display: flex;
+    flex-direction: column;
+    .actors {
+      width: 100%;
+    }
+    .actor-container {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 16px;
+      width: 100%;
+      img {
+        width: 75px;
+      }
+    }
+    .carousel {
+      height: 200px;
+      width: 100%;
+      .carousel-item {
+        margin: 10px 20px;
+      }
+    }
+  }
+}
