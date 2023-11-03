@@ -4,6 +4,9 @@
 
 A school related project by @Joel-Schaltenbrand @leonden (From M426: @Enrico-Proietto @KentoPuleo)
 
+## JUnit5 Maven Tests
+[![Maven JUnit5 Tests](https://github.com/Joel-Schaltenbrand/m450-project-movify/actions/workflows/JUnitTest.yml/badge.svg)](https://github.com/Joel-Schaltenbrand/m450-project-movify/actions/workflows/JUnitTest.yml)
+
 ## What's movify?
 
 Movify proposes movies interactively to the user. Swipe to either like or discard a movie.
