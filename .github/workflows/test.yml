@@ -22,12 +22,13 @@ jobs:
     - name: Build and test
       working-directory: backend/movify
       run: |
-        mvn clean test
+        mvn clean test --batch-mode
+   
     - name: Report
       uses: dorny/test-reporter@v1
-      if: always()
+      if: success() || failure()
       with:
         name: Maven Tests
-        path: target/surefire-reports/*.xml
+        path: backend/movify/target/surefire-reports/*.xml
         reporter: java-junit
         fail-on-error: true
