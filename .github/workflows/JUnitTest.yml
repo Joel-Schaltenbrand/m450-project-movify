@@ -1,0 +1,33 @@
+name: Maven JUnit5 Tests
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '20'
+        distribution: 'temurin'
+
+    - name: Build and test
+      working-directory: backend/movify
+      run: |
+        mvn clean test
+   
+    - name: Report
+      uses: dorny/test-reporter@v1
+      if: success() || failure()
+      with:
+        name: Maven Tests
+        path: backend/movify/target/surefire-reports/*.xml
+        reporter: java-junit
