@@ -102,7 +102,7 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
-	private boolean checkLoggedIn(String id) {
+	boolean checkLoggedIn(String id) {
 		String uuid = (String) session.getAttribute(SessionConstants.USER_ID);
 		return uuid != null && uuid.equals(id);
 	}
