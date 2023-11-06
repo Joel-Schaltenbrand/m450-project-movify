@@ -69,7 +69,7 @@ public class MovieServiceImpl extends AbstractWebClient implements MovieService 
 		return null;
 	}
 
-	private Optional<Long> getMovieID() {
+	public Optional<Long> getMovieID() {
 		List<TopRatedMovie> movies = checkSession();
 		if (movies.size() <= 2) {
 			movies.addAll(fetchTopRatedMovies());
