@@ -5,7 +5,7 @@
 A school related project by @Joel-Schaltenbrand @leonden (From M426: @Enrico-Proietto @KentoPuleo)
 
 ## JUnit5 Maven Tests
-[![Maven JUnit5 Tests](https://github.com/Joel-Schaltenbrand/m450-project-movify/actions/workflows/JUnitTest.yml/badge.svg)](https://github.com/Joel-Schaltenbrand/m450-project-movify/actions/workflows/JUnitTest.yml)
+[![Maven JUnit5 Tests](https://github.com/Joel-Schaltenbrand/m450-project-movify/actions/workflows/JUnitTest.yml/badge.svg?branch=master)](https://github.com/Joel-Schaltenbrand/m450-project-movify/actions/workflows/JUnitTest.yml)
 
 ## What's movify?
 
