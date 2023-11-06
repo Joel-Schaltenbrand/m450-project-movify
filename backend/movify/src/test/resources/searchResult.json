@@ -1,0 +1,45 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/rzdPqYx7Um4FUZeD8wpXqjAUcEm.jpg",
+      "genre_ids": [
+        18,
+        10749
+      ],
+      "id": 597,
+      "original_language": "en",
+      "original_title": "Titanic",
+      "overview": "Atlantischer Ozean, 1912: Auf der Jungfernfahrt der Titanic trifft der mittellose Maler Jack Dawson auf die schöne, aber unglückliche Erste-Klasse-Passagierin Rose DeWitt Bukater. Rose reist gemeinsam mit ihrer Mutter und ihrem versnobten Verlobten Cal, den sie aus finanziellen Gründen heiraten soll, aber nicht liebt. Als Jack beobachtet, wie Rose über die Reling klettert, um sich ins Meer zu stürzen, und ihren sicheren Tod abwenden kann, beginnt für beide eine Liebesgeschichte über Klassengrenzen hinweg. Gemeinsam mit Jack entdeckt Rose das ausgelassene Leben der einfachen Passagiere unter Deck der Titanic und das wahre Wesen der Liebe. Währenddessen steuert die als unsinkbar geltende Titanic geradewegs auf einen Eisberg zu.",
+      "popularity": 138.209,
+      "poster_path": "/MlnPG3oxhfmuiDwcoeElQWui9m.jpg",
+      "release_date": "1997-11-18",
+      "title": "Titanic",
+      "video": false,
+      "vote_average": 7.9,
+      "vote_count": 23804
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/ahbx803wrITvlSjxLyp0Sfkzy3s.jpg",
+      "genre_ids": [
+        18,
+        10749
+      ],
+      "id": 16535,
+      "original_language": "en",
+      "original_title": "Titanic 2",
+      "overview": "Julia Sturges will der oberflächlichen High-Society-Welt ihres Mannes Richard entfliehen und geht gemeinsam mit ihren beiden Kindern an Bord der RMS Titanic, um nach Amerika zu reisen. In der Hoffnung auf Versöhnung mit seiner Familie schifft sich Richard auf dem Zwischendeck der Titanic ein - nicht ahnend, dass allen Passagieren schicksalsträchtige Ereignisse bevorstehen...",
+      "popularity": 15.71,
+      "poster_path": "/sBMJqcBgijgnU44V7Wl6g6ZVmpJ.jpg",
+      "release_date": "1953-04-11",
+      "title": "Der Untergang der Titanic",
+      "video": false,
+      "vote_average": 6.6,
+      "vote_count": 120
+    }
+  ],
+  "total_pages": 10,
+  "total_results": 191
+}

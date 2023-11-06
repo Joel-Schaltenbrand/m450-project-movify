@@ -1,5 +1,5 @@
 package ch.bbzbl.movify.service;
 
-class MovieServiceImplTest {
+class MovieServiceTest {
 
 }

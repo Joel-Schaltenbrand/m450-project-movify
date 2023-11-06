@@ -7,6 +7,7 @@ import ch.bbzbl.movify.model.user.User;
 import ch.bbzbl.movify.model.user.UserDTO;
 import ch.bbzbl.movify.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
-class UserServiceImplTest {
+class UserServiceTest {
 
 	@InjectMocks
 	private UserServiceImpl userService;
@@ -40,9 +41,16 @@ class UserServiceImplTest {
 	@Mock
 	private HttpSession session;
 
+	private AutoCloseable closeable;
+
 	@BeforeEach
 	void init() {
-		MockitoAnnotations.openMocks(this);
+		closeable = MockitoAnnotations.openMocks(this);
+	}
+
+	@AfterEach
+	void close() throws Exception {
+		closeable.close();
 	}
 
 	@Test

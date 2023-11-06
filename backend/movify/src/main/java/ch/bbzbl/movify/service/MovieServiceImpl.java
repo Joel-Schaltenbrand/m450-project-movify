@@ -63,6 +63,12 @@ public class MovieServiceImpl extends AbstractWebClient implements MovieService 
 				.orElse(new MovieExtended());
 	}
 
+	@Override
+	public List<MovieExtended> searchMovie(String search) {
+		//TODO: Implementiere nach TDD (MovieSearchTest)
+		return null;
+	}
+
 	private Optional<Long> getMovieID() {
 		List<TopRatedMovie> movies = checkSession();
 		if (movies.size() <= 2) {
