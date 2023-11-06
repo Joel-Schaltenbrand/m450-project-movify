@@ -37,12 +37,12 @@ import java.util.Optional;
  */
 @ExtendWith(MockitoExtension.class)
 class MovieSearchTest {
-	/*@InjectMocks
+	@InjectMocks
 	private MovieServiceImpl movieService;
 
 	@Test
 	void searchMovies() throws IOException {
-		String movies = IOUtils.toString(Objects.requireNonNull(MovieServiceTest.class.getResourceAsStream("/searchResult.json")), StandardCharsets.UTF_8);
+		String movies = IOUtils.toString(Objects.requireNonNull(MovieSearchTest.class.getResourceAsStream("/searchResult.json")), StandardCharsets.UTF_8);
 		Mockito.when(movieService.doGet(Mockito.anyString(), Mockito.any())).thenReturn(Optional.of(movies));
 		Mockito.when(movieService.getMovieDetails(597)).thenReturn(createFakeMovieExtended("Titanic", "1997"));
 		Mockito.when(movieService.getMovieDetails(16535)).thenReturn(createFakeMovieExtended("Titanic 2", "1953"));
@@ -68,6 +68,6 @@ class MovieSearchTest {
 		movieExtended.setTitle(name);
 		movieExtended.setReleaseYear(year);
 		return movieExtended;
-	}*/
+	}
 
 }
