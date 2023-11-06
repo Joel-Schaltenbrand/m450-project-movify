@@ -55,7 +55,7 @@ public class MovieServiceImpl extends AbstractWebClient implements MovieService 
 
 	@Override
 	public MovieExtended getMovieDetails(long id) {
-		return doGet(String.format("%s", id), paramsDefault)
+		return doGet(String.format("movie/%s", id), paramsDefault)
 				.map(response -> {
 					Movie movie = GSON.fromJson(response, Movie.class);
 					return movieFactory.createMovieExtended(movie, getCast(movie.getId()), getMovieTrailer(movie.getId()));
@@ -93,7 +93,7 @@ public class MovieServiceImpl extends AbstractWebClient implements MovieService 
 		params.addAll(paramsDefault);
 		params.add("page", String.valueOf(getRandomPage()));
 		params.add("include_adult", "false");
-		Optional<String> response = doGet("top_rated", params);
+		Optional<String> response = doGet("movie/top_rated", params);
 		if (response.isEmpty()) {
 			return new ArrayList<>();
 		}
@@ -117,7 +117,7 @@ public class MovieServiceImpl extends AbstractWebClient implements MovieService 
 	}
 
 	private Optional<String> getMovieTrailer(Long id) {
-		String endpoint = String.format("%s/videos", id);
+		String endpoint = String.format("movie/%s/videos", id);
 		return doGet(endpoint, paramsDefault)
 				.map(response -> GSON.fromJson(response, TrailerResult.class).getResults())
 				.filter(trailers -> !trailers.isEmpty())
@@ -126,7 +126,7 @@ public class MovieServiceImpl extends AbstractWebClient implements MovieService 
 	}
 
 	private List<CastModified> getCast(long id) {
-		Optional<String> responseAsString = doGet(String.format("%s/credits", id), paramsDefault);
+		Optional<String> responseAsString = doGet(String.format("movie/%s/credits", id), paramsDefault);
 		return responseAsString.map(response -> {
 			CastResult result = GSON.fromJson(response, CastResult.class);
 			return movieFactory.createCastExtended(result.getCast().subList(0, Math.min(5, result.getCast().size())));

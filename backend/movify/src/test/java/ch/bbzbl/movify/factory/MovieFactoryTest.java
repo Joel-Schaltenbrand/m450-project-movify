@@ -5,15 +5,12 @@ import ch.bbzbl.movify.model.movie.cast.CastModified;
 import ch.bbzbl.movify.model.movie.genre.Genres;
 import ch.bbzbl.movify.model.movie.movie.Movie;
 import ch.bbzbl.movify.model.movie.movie.MovieExtended;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
