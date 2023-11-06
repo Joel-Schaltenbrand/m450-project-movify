@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
@@ -23,25 +22,23 @@ import java.util.Optional;
  * <p>
  * Im MovieController (Nicht für Test):<br>
  * <ol>
- *     <li>Neuer REST-Endpunkt mit Suchbegriff erstellen.</li>
- *     <li>Aufruf von movieService.searchMovies(String search).</li>
+ *     <li>Neuer REST-Endpunkt mit Suchbegriff erstellen. (Analog anderer Rest-Endpunkt)</li>
+ *     <li>In Methode: Aufruf von movieService.searchMovies(String search).</li>
+ *     <li>Liste zurückgeben. (Auch wenn leer = Keine besonderen Checks)</li>
  * </ol>
  * <p>
  * Im MovieService:<br>
  * <ol>
- *     <li>Abrufen von <a href="https://api.themoviedb.org/3/search/movie">API</a> mit den erforderlichen Parametern. (API-Key, Suchbegriff, Sprache, Adult-Off)</li>
- *     <li>Umwandeln in TopRatedMovie-Objekte (über TopMovieResults) mit GSON.</li>
- *     <li>Über while Schlaufe Details für jeden Film mit getDetails() abrufen.</li>
- *     <li>Liste zurückgeben.</li>
+ *     <li>Abrufen von <a href="https://api.themoviedb.org/3/search/movie">API</a> mit den erforderlichen Parametern. (API-Key, Suchbegriff, Sprache, Adult-Off [Analog anderen Aufrufen])</li>
+ *     <li>Umwandeln in TopRatedMovie-Objekte Liste (über TopMovieResults) mit GSON.</li>
+ *     <li>Über while Schlaufe (liste.getId) Details für jeden Film mit getDetails() abrufen.</li>
+ *     <li>Liste an Controller zurückgeben</li>
  * </ol>
  * Es muss kein vorhandener Code umgeschrieben oder verändert werden. Es werden jegentlich neue Methoden erstellt, welche bereits vorhandene Methoden aufrufen.
  */
 class MovieSearchTest {
 	@InjectMocks
 	private MovieServiceImpl movieService;
-
-	@Mock
-
 
 	private AutoCloseable closeable;
 
@@ -59,8 +56,8 @@ class MovieSearchTest {
 	void searchMovies() throws IOException {
 		String movies = IOUtils.toString(Objects.requireNonNull(MovieServiceTest.class.getResourceAsStream("/searchResult.json")), StandardCharsets.UTF_8);
 		Mockito.when(movieService.doGet(Mockito.anyString(), Mockito.any())).thenReturn(Optional.of(movies));
-		Mockito.when(movieService.getMovieDetails(597)).thenReturn(createMovieExtended("Titanic", "1997"));
-		Mockito.when(movieService.getMovieDetails(16535)).thenReturn(createMovieExtended("Titanic 2", "1953"));
+		Mockito.when(movieService.getMovieDetails(597)).thenReturn(createFakeMovieExtended("Titanic", "1997"));
+		Mockito.when(movieService.getMovieDetails(16535)).thenReturn(createFakeMovieExtended("Titanic 2", "1953"));
 
 		List<MovieExtended> moviesExtended = movieService.searchMovie("Titanic");
 		Assertions.assertEquals(2, moviesExtended.size());
@@ -78,10 +75,10 @@ class MovieSearchTest {
 		Assertions.assertTrue(moviesExtended.isEmpty());
 	}
 
-	private MovieExtended createMovieExtended(String titanic, String number) {
+	private MovieExtended createFakeMovieExtended(String name, String year) {
 		MovieExtended movieExtended = new MovieExtended();
-		movieExtended.setTitle(titanic);
-		movieExtended.setReleaseYear(number);
+		movieExtended.setTitle(name);
+		movieExtended.setReleaseYear(year);
 		return movieExtended;
 	}
 
