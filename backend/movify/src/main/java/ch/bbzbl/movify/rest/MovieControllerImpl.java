@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/movie")
 public class MovieControllerImpl implements MovieController {
@@ -18,5 +20,10 @@ public class MovieControllerImpl implements MovieController {
 	@Override
 	public ResponseEntity<MovieExtended> getRandomMovie() {
 		return new ResponseEntity<>(movieService.getRandomMovie(), HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<List<MovieExtended>> searchMovie(String search) {
+		return new ResponseEntity<>(movieService.searchMovie(search), HttpStatus.OK);
 	}
 }

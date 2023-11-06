@@ -19,13 +19,6 @@ import java.util.Optional;
  * <b>TDD Ziel:</b> Suche nach einem Film anhand eines Suchbegriffs über einen REST-Endpunkt.<br>
  * Es sollte eine Liste mit gefetchten Filmen zurückgegeben werden.
  * <p>
- * Im MovieController (Nicht für Test):<br>
- * <ol>
- *     <li>Neuer REST-Endpunkt mit Suchbegriff erstellen. (Analog anderer Rest-Endpunkt)</li>
- *     <li>In Methode: Aufruf von movieService.searchMovies(String search).</li>
- *     <li>Liste zurückgeben. (Auch wenn leer = Keine besonderen Checks)</li>
- * </ol>
- * <p>
  * Im MovieService:<br>
  * <ol>
  *     <li>Abrufen von <a href="https://api.themoviedb.org/3/search/movie">API</a> mit den erforderlichen Parametern. (API-Key, Suchbegriff, Sprache, Adult-Off [Analog anderen Aufrufen], <b>WICHTIG</b> Path: search/movie)</li>
