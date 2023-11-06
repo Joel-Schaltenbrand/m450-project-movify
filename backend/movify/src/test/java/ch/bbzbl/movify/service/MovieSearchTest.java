@@ -28,10 +28,10 @@ import java.util.Optional;
  * <p>
  * Im MovieService:<br>
  * <ol>
- *     <li>Abrufen von <a href="https://api.themoviedb.org/3/search/movie">API</a> mit den erforderlichen Parametern. (API-Key, Suchbegriff, Sprache, Adult-Off [Analog anderen Aufrufen])</li>
- *     <li>Umwandeln in TopRatedMovie-Objekte Liste (über TopMovieResults) mit GSON.</li>
- *     <li>Über while Schlaufe (liste.getId) Details für jeden Film mit getDetails() abrufen.</li>
- *     <li>Liste an Controller zurückgeben</li>
+ *     <li>Abrufen von <a href="https://api.themoviedb.org/3/search/movie">API</a> mit den erforderlichen Parametern. (API-Key, Suchbegriff, Sprache, Adult-Off [Analog anderen Aufrufen], <b>WICHTIG</b> Path: search/movie)</li>
+ *     <li>Umwandeln in TopRatedMovie-Objekte Liste (über TopMovieResults) mit GSON. (Analog anderen Fetchings)</li>
+ *     <li>Über while-Schlaufe (topRatedMovieListe.getId) Details für jeden Film mit getDetails() abrufen und als Liste<MovieExtended> speichern.</li>
+ *     <li>Liste mit den Extended Movies an Controller zurückgeben</li>
  * </ol>
  * Es muss kein vorhandener Code umgeschrieben oder verändert werden. Es werden jegentlich neue Methoden erstellt, welche bereits vorhandene Methoden aufrufen.
  */
