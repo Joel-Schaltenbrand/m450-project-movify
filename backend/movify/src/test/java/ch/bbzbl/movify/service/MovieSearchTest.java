@@ -2,13 +2,12 @@ package ch.bbzbl.movify.service;
 
 import ch.bbzbl.movify.model.movie.movie.MovieExtended;
 import org.apache.commons.io.IOUtils;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -36,21 +35,10 @@ import java.util.Optional;
  * </ol>
  * Es muss kein vorhandener Code umgeschrieben oder verändert werden. Es werden jegentlich neue Methoden erstellt, welche bereits vorhandene Methoden aufrufen.
  */
+@ExtendWith(MockitoExtension.class)
 class MovieSearchTest {
 	@InjectMocks
 	private MovieServiceImpl movieService;
-
-	private AutoCloseable closeable;
-
-	@BeforeEach
-	void init() {
-		closeable = MockitoAnnotations.openMocks(this);
-	}
-
-	@AfterEach
-	void close() throws Exception {
-		closeable.close();
-	}
 
 	@Test
 	void searchMovies() throws IOException {

@@ -9,15 +9,18 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@ExtendWith(MockitoExtension.class)
 class MovieFactoryTest {
 
 	@InjectMocks
@@ -28,17 +31,6 @@ class MovieFactoryTest {
 
 	@Mock
 	private Cast cast;
-	private AutoCloseable closeable;
-
-	@BeforeEach
-	void init() {
-		closeable = MockitoAnnotations.openMocks(this);
-	}
-
-	@AfterEach
-	void close() throws Exception {
-		closeable.close();
-	}
 
 	@Test
 	public void testCreateMovieExtended_WithTrailer() {

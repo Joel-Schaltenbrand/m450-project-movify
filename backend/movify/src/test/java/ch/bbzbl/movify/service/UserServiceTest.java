@@ -7,14 +7,13 @@ import ch.bbzbl.movify.model.user.User;
 import ch.bbzbl.movify.model.user.UserDTO;
 import ch.bbzbl.movify.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.util.ArrayList;
@@ -24,6 +23,7 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class UserServiceTest {
 
 	@InjectMocks
@@ -42,16 +42,6 @@ class UserServiceTest {
 	private HttpSession session;
 
 	private AutoCloseable closeable;
-
-	@BeforeEach
-	void init() {
-		closeable = MockitoAnnotations.openMocks(this);
-	}
-
-	@AfterEach
-	void close() throws Exception {
-		closeable.close();
-	}
 
 	@Test
 	void createUser_Success() {
