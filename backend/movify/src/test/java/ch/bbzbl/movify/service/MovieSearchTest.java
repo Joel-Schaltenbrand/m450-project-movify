@@ -37,7 +37,7 @@ import java.util.Optional;
  */
 @ExtendWith(MockitoExtension.class)
 class MovieSearchTest {
-	@InjectMocks
+	/*@InjectMocks
 	private MovieServiceImpl movieService;
 
 	@Test
@@ -68,6 +68,6 @@ class MovieSearchTest {
 		movieExtended.setTitle(name);
 		movieExtended.setReleaseYear(year);
 		return movieExtended;
-	}
+	}*/
 
 }

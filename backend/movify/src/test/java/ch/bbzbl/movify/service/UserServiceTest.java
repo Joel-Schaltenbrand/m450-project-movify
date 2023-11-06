@@ -183,7 +183,7 @@ class UserServiceTest {
 		Mockito.when(userRepository.findById(userId)).thenReturn(Optional.of(user));
 		Mockito.when(userFactory.createUserDTO(user)).thenReturn(new UserDTO(userId, "test@example.com", Collections.emptyList()));
 		Mockito.when(session.getAttribute(SessionConstants.USER_ID)).thenReturn(userId);
-		Mockito.when(userRepository.save(any())).thenReturn(user);
+		Mockito.when(userRepository.save(Mockito.any())).thenReturn(user);
 		UserDTO result = userService.removeFavorite(userId, movieId);
 
 		Assertions.assertEquals(0, result.getFavoriteMovies().size());
