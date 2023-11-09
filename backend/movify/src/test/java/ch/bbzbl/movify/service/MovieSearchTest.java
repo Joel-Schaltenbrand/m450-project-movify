@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -35,6 +37,9 @@ class MovieSearchTest {
 
 	@Test
 	void searchMovies() throws IOException {
+		// Mock the behavior of your movieService
+		Mockito.when(movieService.getWebClient()).thenReturn(WebClient.builder().build());
+
 		String movies = IOUtils.toString(Objects.requireNonNull(MovieSearchTest.class.getResourceAsStream("/searchResult.json")), StandardCharsets.UTF_8);
 		Mockito.when(movieService.doGet(Mockito.anyString(), Mockito.any())).thenReturn(Optional.of(movies));
 		Mockito.when(movieService.getMovieDetails(597)).thenReturn(createFakeMovieExtended("Titanic", "1997"));
@@ -48,9 +53,11 @@ class MovieSearchTest {
 		Assertions.assertEquals("1953", moviesExtended.get(1).getReleaseYear());
 	}
 
+
 	@Test
 	void searchMoviesNoResults() {
 		String emptyResult = "[]";
+		Mockito.when(movieService.getWebClient()).thenReturn(WebClient.builder().build());
 		Mockito.when(movieService.doGet(Mockito.anyString(), Mockito.any())).thenReturn(Optional.of(emptyResult));
 		List<MovieExtended> moviesExtended = movieService.searchMovie("NonExistentMovie");
 		Assertions.assertTrue(moviesExtended.isEmpty());

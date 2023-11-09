@@ -56,7 +56,7 @@ public abstract class AbstractWebClient {
 
 	protected abstract String baseUrl();
 
-	protected WebClient getWebClient() {
+	public WebClient getWebClient() {
 		return webClient;
 	}
 }

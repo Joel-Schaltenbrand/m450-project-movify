@@ -134,10 +134,10 @@ class UserServiceTest {
 		User user = new User(userId, "test@example.com", BCrypt.hashpw("Passw0rd!", BCrypt.gensalt()), new ArrayList<>());
 		MovieExtended movie = new MovieExtended();
 		movie.setId(1L);
-		movie.setTitle("Test");
-		movie.setOverview("Test");
+		movie.setTitle("TestTitle");
+		movie.setOverview("TestOverview");
 		movie.setReleaseYear("2021");
-		movie.setPosterPath("Test");
+		movie.setPosterPath("TestPosterPath");
 		Mockito.when(userRepository.findById(userId)).thenReturn(Optional.of(user));
 		Mockito.when(movieService.getMovieDetails(movieId)).thenReturn(movie);
 		Mockito.when(userFactory.createUserDTO(user)).thenReturn(new UserDTO(userId, "test@example.com", Collections.singletonList(movie)));
@@ -145,10 +145,10 @@ class UserServiceTest {
 		Mockito.when(userRepository.save(any(User.class))).thenReturn(user);
 		UserDTO result = userService.addFavorite(userId, movieId);
 
-		Assertions.assertEquals("Test", result.getFavoriteMovies().get(0).getTitle());
+		Assertions.assertEquals("TestPosterPath", result.getFavoriteMovies().get(0).getPosterPath());
 		Assertions.assertEquals(1, result.getFavoriteMovies().size());
-		Assertions.assertEquals("Test", result.getFavoriteMovies().get(0).getTitle());
-		Assertions.assertEquals("Test", result.getFavoriteMovies().get(0).getOverview());
+		Assertions.assertEquals("TestTitle", result.getFavoriteMovies().get(0).getTitle());
+		Assertions.assertEquals("TestOverview", result.getFavoriteMovies().get(0).getOverview());
 		Assertions.assertEquals("2021", result.getFavoriteMovies().get(0).getReleaseYear());
 		Mockito.verify(userRepository).save(user);
 	}
