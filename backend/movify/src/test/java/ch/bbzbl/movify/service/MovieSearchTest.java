@@ -1,21 +1,15 @@
 package ch.bbzbl.movify.service;
 
 import ch.bbzbl.movify.model.movie.movie.MovieExtended;
-import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 /**
  * <b>TDD Ziel:</b> Suche nach einem Film anhand eines Suchbegriffs über einen REST-Endpunkt.<br>
@@ -31,43 +25,34 @@ import java.util.Optional;
  * Es muss kein vorhandener Code umgeschrieben oder verändert werden. Es werden jegentlich neue Methoden erstellt, welche bereits vorhandene Methoden aufrufen.
  */
 @ExtendWith(MockitoExtension.class)
+@SpringBootTest
 class MovieSearchTest {
-	@InjectMocks
+	@Autowired
 	private MovieServiceImpl movieService;
 
 	@Test
-	void searchMovies() throws IOException {
-		// Mock the behavior of your movieService
-		Mockito.when(movieService.getWebClient()).thenReturn(WebClient.builder().build());
-
-		String movies = IOUtils.toString(Objects.requireNonNull(MovieSearchTest.class.getResourceAsStream("/searchResult.json")), StandardCharsets.UTF_8);
-		Mockito.when(movieService.doGet(Mockito.anyString(), Mockito.any())).thenReturn(Optional.of(movies));
-		Mockito.when(movieService.getMovieDetails(597)).thenReturn(createFakeMovieExtended("Titanic", "1997"));
-		Mockito.when(movieService.getMovieDetails(16535)).thenReturn(createFakeMovieExtended("Titanic 2", "1953"));
-
+	void searchMovies() {
 		List<MovieExtended> moviesExtended = movieService.searchMovie("Titanic");
-		Assertions.assertEquals(2, moviesExtended.size());
-		Assertions.assertEquals("Titanic", moviesExtended.get(0).getTitle());
-		Assertions.assertEquals("Titanic 2", moviesExtended.get(1).getTitle());
-		Assertions.assertEquals("1997", moviesExtended.get(0).getReleaseYear());
-		Assertions.assertEquals("1953", moviesExtended.get(1).getReleaseYear());
+		Assertions.assertFalse(moviesExtended.isEmpty());
+		int numberOfMovies = moviesExtended.size();
+		Assertions.assertTrue(numberOfMovies >= 1 && numberOfMovies <= 20);
+	}
+
+	@Test
+	void searchMovie() {
+		List<MovieExtended> moviesExtended = movieService.searchMovie("Avatar: The Way of Water");
+		Assertions.assertFalse(moviesExtended.isEmpty());
+		int numberOfMovies = moviesExtended.size();
+		Assertions.assertEquals(1, numberOfMovies);
+		Assertions.assertEquals("Avatar: The Way of Water", moviesExtended.get(0).getTitle());
+		Assertions.assertEquals(76600, moviesExtended.get(0).getId());
+		Assertions.assertEquals("2022", moviesExtended.get(0).getReleaseYear());
 	}
 
 
 	@Test
 	void searchMoviesNoResults() {
-		String emptyResult = "[]";
-		Mockito.when(movieService.getWebClient()).thenReturn(WebClient.builder().build());
-		Mockito.when(movieService.doGet(Mockito.anyString(), Mockito.any())).thenReturn(Optional.of(emptyResult));
 		List<MovieExtended> moviesExtended = movieService.searchMovie("NonExistentMovie");
 		Assertions.assertTrue(moviesExtended.isEmpty());
 	}
-
-	private MovieExtended createFakeMovieExtended(String name, String year) {
-		MovieExtended movieExtended = new MovieExtended();
-		movieExtended.setTitle(name);
-		movieExtended.setReleaseYear(year);
-		return movieExtended;
-	}
-
 }

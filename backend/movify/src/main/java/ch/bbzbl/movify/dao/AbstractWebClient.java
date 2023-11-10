@@ -20,10 +20,11 @@ public abstract class AbstractWebClient {
 	@Autowired
 	private HttpClient nettyHttpClient;
 
-	private WebClient webClient = null;
+	private WebClient webClient;
 
 	@PostConstruct
 	public void initWebClient() {
+		System.out.println("Initializing WebClient...");
 		this.webClient = WebClient.builder()
 				.clientConnector(new ReactorClientHttpConnector(nettyHttpClient))
 				.codecs(configurer -> configurer
@@ -56,7 +57,7 @@ public abstract class AbstractWebClient {
 
 	protected abstract String baseUrl();
 
-	public WebClient getWebClient() {
+	protected WebClient getWebClient() {
 		return webClient;
 	}
 }

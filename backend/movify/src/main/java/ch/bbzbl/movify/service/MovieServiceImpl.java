@@ -75,8 +75,8 @@ public class MovieServiceImpl extends AbstractWebClient implements MovieService 
         }
         TopRatedMovieResult movieResult = GSON.fromJson(response.get(), TopRatedMovieResult.class);
         List<MovieExtended> list = new ArrayList<>();
-        movieResult.getResults().forEach(topRatedMovie -> list.add(getMovieDetails(topRatedMovie.getId()))
-        );
+        movieResult.getResults().stream().filter(movie -> !movie.getOverview().isEmpty())
+                .forEach(movie -> list.add(getMovieDetails(movie.getId())));
         return list;
     }
 
